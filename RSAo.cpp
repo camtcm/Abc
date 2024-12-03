@@ -150,11 +150,6 @@ string descifrarMensaje(string mensajeCifrado, int d, int n) {
         int valorCifrado = stoi(bloqueActual);
         int valorDescifrado = modExp(valorCifrado, d, n);
         
-        // Verificar el rango del valor descifrado
-        if (valorDescifrado < 0 || valorDescifrado > 255) {
-            valorDescifrado = valorDescifrado & 0xFF; // Máscara para 8 bits
-        }
-        
         mensajeDescifrado += (char)valorDescifrado;
     }
     
@@ -168,7 +163,7 @@ int main() {
     cout << "Clave encriptacion: (" << n << ", " << e <<")\n";
     cout << "Clave desencriptacion: (" << d << ", " << e <<")\n";
 
-    string mensaje = "hola mALDITOS cucucucu";
+    string mensaje = "camila@gmail.com";
     cout << "\nMensaje original: " << mensaje;
 
     string mensajeCifrado = cifrarMensaje(mensaje, e, n);

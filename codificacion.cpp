@@ -148,14 +148,26 @@ void decodificar(char** H, int filasH, int columnasH, char** c, char**& d) {
     multiplicarMatrices(H, filasH, columnasH, CT, columnasH, 1, d);
 }
 
+int erroresDetectables(int distMin) {
+    return distMin - 1;
+}
+
+int erroresCorregibles(int distMin) {
+    return (distMin - 1) / 2;
+}
+
 int main() {
-    const char* grupo[] = { "000000", "101010", "010101", "111111" };
+    // const char* grupo[] = { "000000", "101010", "010101", "111111" };
+    const char* grupo[] = { "000000", "101010", "010101", "000011" };
     int size = sizeof(grupo) / sizeof(grupo[0]);
 
     int minDist = distanciaMinima(grupo, size);
     if (minDist != -1) {
-        cout << "Minimum distance: " << minDist << endl;
+        cout << "Distancia minima: " << minDist << endl;
+        cout << "Errores detectables: " << erroresDetectables(minDist) << endl;
+        cout << "Errores corregibles: " << erroresCorregibles(minDist) << endl; 
     }
+
 
     int filasA = 3, columnasA = 3;
     int filasG = filasA, columnasG = filasA + columnasA;
